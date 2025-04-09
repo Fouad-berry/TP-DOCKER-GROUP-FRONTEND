@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-4 text-center">Bienvenue sur le portail d'informations des Lycées numériques en France</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center">Bienvenue sur le portail d&apos;informations des Lycées numériques en France</h1>
         
         <div className="relative mb-4">
           <input
