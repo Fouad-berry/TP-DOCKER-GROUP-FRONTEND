@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react'
+import './lycee-numeriques.module.css'
 
 export default function Home() {
   const [search, setSearch] = useState('')

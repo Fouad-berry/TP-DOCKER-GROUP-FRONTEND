@@ -1,23 +1,27 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const page = () => {
+  const router = useRouter();
   return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center px-6">
         <div className="max-w-6xl w-full flex flex-col md:flex-row items-center bg-white shadow-lg rounded-xl overflow-hidden">
           
           <div className="w-full md:w-1/2 p-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">Bienvenue sur notre site</h1>
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">Éducation Connectée : Découvrez les Lycées Numériques</h1>
             <p className="text-gray-600 mb-6">
-              Découvrez les lycées numériques, leur offre de formation, les projets éducatifs et l’innovation au cœur de l’enseignement digital.
+              670 lycées, 160.000 tablettes, 37.000 ordinateurs... mais quel lycée a choisi quoi ? Explorez les choix numériques des établissements d'Île-de-France.
             </p>
-            <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+            <button  onClick={() => router.push('/lycee-numeriques')} className="bg-[#ff5722] text-white px-5 py-2 rounded-lg hover:bg-[#e64a19] transition buttonStart">
               Commencer
             </button>
           </div>
 
           <div className="w-full md:w-1/2">
             <img
-              src="/lycee_numerique2.png"
+              src="/lycee_numerique22.png"
               alt="Lycée numérique"
               className="object-cover w-full h-full"
             />
