@@ -1,7 +1,64 @@
 'use client';
 
-import { useState } from 'react'
+import { Suspense, useEffect, useMemo, useState } from 'react'
 import './lycee-numeriques.module.css'
+
+
+interface Todo{
+  _id: string;
+  nom: string;
+  statut: string;
+}
+
+function LyceeList({ searchTerm } : { searchTerm: string }) {
+  const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('http://localhost:8000/donnees');
+      const data = await res.json();
+      // const lycee = data.map((item: { [x: string]: any; nom: any; statut: any; }) => ({
+      //   numSiret: item['n° SIRET'],
+      //   nom: item.nom,
+      //   statut: item.statut
+      // }));
+      setTodoList(data);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+
+  // Search Bar
+  const filteredLycee = useMemo(() => {
+    return todoList.filter(todo => 
+      todo.nom.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      todo.statut.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      todo._id.toLowerCase().includes(searchTerm)
+    )
+  }, [todoList, searchTerm]);
+
+
+  if (loading) {
+    return <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5 text-3xl'>Loading Todos...</div>;
+  }
+
+  return (
+    <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5'>
+      <h1 className='text-3xl'>Todo List</h1>
+      <ul>
+        {/* {todoList.map((todoObj) => (
+          <li key={todoObj._id}>Title: {todoObj.nom} - {todoObj.statut} - {todoObj._id}</li>
+        ))} */}
+        {filteredLycee.map((todoObj) => (
+          <li key={todoObj._id}>Nom: {todoObj.nom} - {todoObj.statut} - id: {todoObj._id}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function Home() {
   const [search, setSearch] = useState('')
@@ -34,6 +91,11 @@ export default function Home() {
         <ul className="space-y-2">
         </ul>
       </div>
+
+      <Suspense>
+        <LyceeList searchTerm={search} />
+      </Suspense>
+
     </div>
   )
 }
