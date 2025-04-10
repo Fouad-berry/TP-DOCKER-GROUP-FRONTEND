@@ -20,7 +20,7 @@ export default function Home() {
                          {' '}
                         <label
                             htmlFor="filterType"
-                            className="text-sm font-medium text-gray-700"
+                            className="text-sm font-medium text-gray-700 mr-2"
                         >
                             Filtrer par :
                         </label>
