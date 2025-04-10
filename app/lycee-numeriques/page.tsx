@@ -14,7 +14,7 @@ export default function Home() {
         <h1 className="text-2xl font-bold mb-4 text-center">Bienvenue sur le portail d&apos;informations des Lycées numériques en France</h1>
         
         <div className="relative mb-4">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center ml-4 mb-4">
           <label htmlFor="filterType" className="text-sm font-medium text-gray-700">Filtrer par :</label>
           <select
             id="filterType"
