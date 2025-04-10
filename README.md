@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# School Directory – Frontend (Next.js)
 
-## Getting Started
+## 📝 Description  
+Ce projet est l'interface frontend d'une application de gestion d'écoles et lycées digitaux. Développé avec Next.js, il permet :  
 
-First, run the development server:
+- 📜 Afficher la liste des établissements scolaires  
+- 🔍 Effectuer des recherches avancées  
+- ➕ Ajouter de nouveaux établissements  
+- 📱 Une expérience responsive sur tous les appareils  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Capture d'écran de l'application](/path/to/screenshot.png)  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Technologies  
+- **Framework** : Next.js 14 (App Router)  
+- **Langage** : TypeScript  
+- **Styling** : TailwindCSS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Installation
+1. **Cloner le dépôt** :  
+   ```bash
+   git clone https://github.com/votre-repo.git
 
-To learn more about Next.js, take a look at the following resources:
+2. **Installer les dépandances** :
+   ```bash
+   npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Lancer l'application en mode développement** :
+   ```bash
+   npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 Fonctionnalités clés
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📚 Gestion des établissements
+| Fonctionnalité               | Détails                                                                |
+|------------------------------|------------------------------------------------------------------------|
+| **Liste interactive**        | Affichage paginé avec options de tri (A-Z, date, etc.)                 |
+| **Multi-vues**               | Basculer entre vue carte (géolocalisation) et vue tableau (données)    |
+| **Fiche détaillée**          | Profil complet avec : photos, contacts, spécialités, statistiques      |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🔍 Recherche intelligente
+| Composant                    | Description                                                            |
+|------------------------------|------------------------------------------------------------------------|
+| **Barre de recherche**       | Suggestions en temps réel (nom, ville, code postal)                    |
+| **Filtres avancés**          | Combinaison de critères :                                              |
+|                              | - 🗺️ Par localisation (région/département)                             |
+|                              | - 🏫 Type d'établissement (lycée général, CFA, etc.)                   |
+|                              | - 💻 Spécialités digitales (coding, design, cybersécurité)             |
+
+### ✨ Formulaire d'ajout
+| Étape                        | Fonctionnalités                                                        |
+|------------------------------|------------------------------------------------------------------------|
+| **1. Informations de base**  | Validation en temps réel + géocodage automatique                       |
+| **2. Spécialités**          | Sélection multiple avec tags                                            |
+| **3. Documents**            | Upload de PDF (projet pédagogique) + prévisualisation                   |
+| **4. Confirmation**         | Récapitulatif + envoi par email aux administrateurs                     |
+
