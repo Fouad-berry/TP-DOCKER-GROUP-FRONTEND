@@ -29,8 +29,8 @@ const Lyceelist = ({
     filterType,
 }: {
     searchTerm: string;
-    filterType: 'nom' | 'ville' | 'statut' | 'cp';
-}) => {
+    filterType: 'nom' | 'ville' | 'statut' | 'cp' | '';
+  }) => {
     const [lyceeInfo, setLyceeInfo] = useState<Lycee[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -68,12 +68,14 @@ const Lyceelist = ({
     }, []);
 
     const filteredLycee = useMemo(() => {
-        return lyceeInfo.filter((lycee) => {
-            const value = lycee[filterType]?.toString().toLowerCase() || '';
-            return value.includes(searchTerm.toLowerCase());
-        });
+      if (!filterType || searchTerm.trim() === '') return lyceeInfo;
+    
+      return lyceeInfo.filter((lycee) => {
+        const value = lycee[filterType]?.toString().toLowerCase() || '';
+        return value.includes(searchTerm.toLowerCase());
+      });
     }, [lyceeInfo, searchTerm, filterType]);
-
+        
     if (loading) {
         return (
             <div className="flex justify-center items-center h-40">

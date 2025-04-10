@@ -5,9 +5,7 @@ import Lyceelist from '../components/lycee-list/LyceeList';
 
 export default function Home() {
     const [search, setSearch] = useState('');
-    const [filterType, setFilterType] = useState<
-        'nom' | 'ville' | 'statut' | 'cp'
-    >('nom');
+    const [filterType, setFilterType] = useState<'nom' | 'ville' | 'statut' | 'cp' | ''>('nom');
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
@@ -27,25 +25,22 @@ export default function Home() {
                             Filtrer par :
                         </label>
                           {' '}
-                        <select
+                          <select
                             id="filterType"
                             value={filterType}
                             onChange={(e) =>
-                                setFilterType(
-                                    e.target.value as
-                                        | 'nom'
-                                        | 'ville'
-                                        | 'statut'
-                                        | 'cp'
-                                )
+                              setFilterType(
+                                e.target.value === '' ? '' : (e.target.value as 'nom' | 'ville' | 'statut' | 'cp')
+                              )
                             }
                             className="border px-3 py-1 rounded-lg text-sm cursor-pointer"
-                        >
-                            <option value="nom">Nom</option>   {' '}
-                            <option value="ville">Ville</option>   {' '}
-                            <option value="statut">Statut</option>   {' '}
-                            <option value="cp">Code postal</option> {' '}
-                        </select>
+                          >
+                            <option value="">Aucun filtre</option>
+                            <option value="nom">Nom</option>
+                            <option value="ville">Ville</option>
+                            <option value="statut">Statut</option>
+                            <option value="cp">Code postal</option>
+                          </select>
                     </div>
                      {' '}
                     <input
@@ -69,13 +64,17 @@ export default function Home() {
                               : 'bg-purple-500'
                           }`}
                         >
-                          <span className="capitalize mr-2">Filtre : {filterType}</span>
+                          <div className='flex items-center justify-center'>
+                          <span className="capitalize">Filtre : {filterType}</span>
                           <button
-                            onClick={() => setFilterType('nom')} // remet le filtre par défaut
-                            className="text-white hover:text-gray-200"
+                            onClick={() => setFilterType('')}
+                            className="text-white hover:text-gray-200 cursor-pointer" 
+                            aria-label="Supprimer le filtre"
                           >
-                            ×
+                            ×
                           </button>
+                          </div>
+
                         </div>
                       </div>
                     )}
