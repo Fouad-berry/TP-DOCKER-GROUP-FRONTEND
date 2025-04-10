@@ -68,14 +68,23 @@ const Lyceelist = ({
     }, []);
 
     const filteredLycee = useMemo(() => {
-      if (!filterType || searchTerm.trim() === '') return lyceeInfo;
+      if (!searchTerm.trim()) return lyceeInfo;
     
-      return lyceeInfo.filter((lycee) => {
-        const value = lycee[filterType]?.toString().toLowerCase() || '';
-        return value.includes(searchTerm.toLowerCase());
-      });
+      if (filterType) {
+        return lyceeInfo.filter((lycee) => {
+          const value = lycee[filterType]?.toString().toLowerCase() || '';
+          return value.includes(searchTerm.toLowerCase());
+        });
+      }
+    
+      return lyceeInfo.filter((lycee) =>
+        ['nom', 'ville', 'statut', 'cp'].some((key) => {
+          const value = lycee[key as keyof typeof lycee]?.toString().toLowerCase() || '';
+          return value.includes(searchTerm.toLowerCase());
+        })
+      );
     }, [lyceeInfo, searchTerm, filterType]);
-        
+            
     if (loading) {
         return (
             <div className="flex justify-center items-center h-40">

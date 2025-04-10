@@ -35,8 +35,8 @@ export default function Home() {
                             }
                             className="border px-3 py-1 rounded-lg text-sm cursor-pointer"
                           >
-                            <option value="">Aucun filtre</option>
-                            <option value="nom">Nom</option>
+{/*                             <option value="">Aucun filtre</option>
+ */}                            <option value="nom">Nom</option>
                             <option value="ville">Ville</option>
                             <option value="statut">Statut</option>
                             <option value="cp">Code postal</option>
