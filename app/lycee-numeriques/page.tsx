@@ -59,12 +59,12 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
         {filteredLycee.map((monlycee) => (
           <div key={monlycee._id} className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer">
             <h2 className="text-xl font-semibold text-blue-800 mb-2">{monlycee.nom}</h2>
-            <span className={`inline-block px-3 py-1 rounded-full text-white text-xs ${
+            <span className={`inline-block px-2 py-1 rounded-full text-white text-xs ${
                 monlycee.statut.toLowerCase() === 'public' ? 'bg-green-500' : 'bg-red-500'
             }`}>
                 {monlycee.statut}
             </span>
-            <p className="text-sm text-gray-500"><strong>ID :</strong> {monlycee._id}</p>
+            <p className="text-sm text-gray-500 mt-4"><strong>ID :</strong> {monlycee._id}</p>
             <p className="text-sm text-gray-500"><strong>Ville :</strong> {monlycee.ville}</p>
           </div>
         ))}
