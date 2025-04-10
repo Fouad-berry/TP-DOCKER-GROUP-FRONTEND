@@ -18,7 +18,7 @@ export default function Home() {
                 </h1>
 
                 <div className="relative mb-4">
-                    <div className="flex items-center ml-4 mb-4">
+                    <div className="flex items-center ml-4 mb-1">
                          {' '}
                         <label
                             htmlFor="filterType"
@@ -26,7 +26,7 @@ export default function Home() {
                         >
                             Filtrer par :
                         </label>
-                         {' '}
+                          {' '}
                         <select
                             id="filterType"
                             value={filterType}
@@ -55,6 +55,31 @@ export default function Home() {
                         onChange={(e) => setSearch(e.target.value)}
                         className="w-full px-4 py-2 pr-10 border rounded-xl focus:outline-none"
                     />
+
+                    {filterType && (
+                      <div className="mt-2 flex items-center justify-start">
+                        <div
+                          className={`flex items-center px-3 py-1 rounded-full text-sm text-white mr-2 cursor-pointer ${
+                            filterType === 'nom'
+                              ? 'bg-orange-400'
+                              : filterType === 'ville'
+                              ? 'bg-blue-500'
+                              : filterType === 'statut'
+                              ? 'bg-green-500'
+                              : 'bg-purple-500'
+                          }`}
+                        >
+                          <span className="capitalize mr-2">Filtre : {filterType}</span>
+                          <button
+                            onClick={() => setFilterType('nom')} // remet le filtre par défaut
+                            className="text-white hover:text-gray-200"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
                 </div>
 
                 <ul className="space-y-2"></ul>
