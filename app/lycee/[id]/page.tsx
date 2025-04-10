@@ -3,9 +3,14 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
+type LyceeDetails = {
+      [key: string]: string | number | null | undefined;
+    };
+    
+
 export default function LyceeDetailsPage() {
     const { id } = useParams();
-    const [lycee, setLycee] = useState<Record<string, any> | null>(null);
+    const [lycee, setLycee] = useState<LyceeDetails | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
