@@ -39,9 +39,9 @@ export default function Home() {
                                         | 'cp'
                                 )
                             }
-                            className="border px-3 py-1 rounded-lg text-sm"
+                            className="border px-3 py-1 rounded-lg text-sm cursor-pointer"
                         >
-                                <option value="nom">Nom</option>   {' '}
+                            <option value="nom">Nom</option>   {' '}
                             <option value="ville">Ville</option>   {' '}
                             <option value="statut">Statut</option>   {' '}
                             <option value="cp">Code postal</option> {' '}
