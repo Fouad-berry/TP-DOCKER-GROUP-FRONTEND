@@ -1,5 +1,5 @@
 import React from 'react';
-import { Suspense, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './LyceeList.module.css'
 
 

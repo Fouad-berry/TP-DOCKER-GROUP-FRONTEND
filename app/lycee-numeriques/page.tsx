@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useMemo, useState } from 'react'
+import { Suspense, useState } from 'react'
 import Lyceelist from '../components/lycee-list/LyceeList';
 
 export default function Home() {
