@@ -4,42 +4,49 @@ import { Suspense, useEffect, useMemo, useState } from 'react'
 import './lycee-numeriques.module.css'
 
 
-interface Todo{
-  _id: string;
-  nom: string;
-  statut: string;
-}
-
+interface Lycee {
+    _id: string;
+    nom: string;
+    statut: string;
+    ville: string;
+    siret: string;
+    academie: string;
+    departement: string;
+    uai: string;
+  }
+  
 function LyceeList({ searchTerm } : { searchTerm: string }) {
-  const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [lyceeInfo, setLyceeInfo] = useState<Lycee[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch('http://localhost:8000/donnees');
-      const data = await res.json();
-      // const lycee = data.map((item: { [x: string]: any; nom: any; statut: any; }) => ({
-      //   numSiret: item['n° SIRET'],
-      //   nom: item.nom,
-      //   statut: item.statut
-      // }));
-      setTodoList(data);
-      setLoading(false);
-    };
+      const fetchData = async () => {
+        const res = await fetch('http://localhost:8000/donnees');
+        const data = await res.json();
+    
+        const lycee = data.map((item: any) => ({
+          _id: item._id,
+          nom: item.nom,
+          statut: item.statut,
+          ville: item.OR_VILLE
+        }));
+    
+        setLyceeInfo(lycee);
+        setLoading(false);
+      };
+    
+      fetchData();
+    }, []);
+    
 
-    fetchData();
-  }, []);
-
-
-  // Search Bar
   const filteredLycee = useMemo(() => {
-    return todoList.filter(todo => 
-      todo.nom.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      todo.statut.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      todo._id.toLowerCase().includes(searchTerm)
+    return lyceeInfo.filter(lycee =>
+      lycee.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      lycee.statut.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      lycee._id.toLowerCase().includes(searchTerm) ||
+      lycee.ville.toLowerCase().includes(searchTerm.toLowerCase())
     )
-  }, [todoList, searchTerm]);
-
+  }, [lyceeInfo, searchTerm]);
 
   if (loading) {
     return <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5 text-3xl'>Loading Todos...</div>;
@@ -48,16 +55,17 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
   return (
     <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5'>
       <h1 className='text-3xl'>Lycées numériques</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-        {filteredLycee.map((todoObj) => (
-          <div key={todoObj._id} className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition">
-            <h2 className="text-xl font-semibold text-blue-800 mb-2">{todoObj.nom}</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+        {filteredLycee.map((monlycee) => (
+          <div key={monlycee._id} className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer">
+            <h2 className="text-xl font-semibold text-blue-800 mb-2">{monlycee.nom}</h2>
             <span className={`inline-block px-3 py-1 rounded-full text-white text-xs ${
-                todoObj.statut.toLowerCase() === 'public' ? 'bg-green-500' : 'bg-red-500'
+                monlycee.statut.toLowerCase() === 'public' ? 'bg-green-500' : 'bg-red-500'
             }`}>
-                {todoObj.statut}
+                {monlycee.statut}
             </span>
-            <p className="text-sm text-gray-500"><strong>ID :</strong> {todoObj._id}</p>
+            <p className="text-sm text-gray-500"><strong>ID :</strong> {monlycee._id}</p>
+            <p className="text-sm text-gray-500"><strong>Ville :</strong> {monlycee.ville}</p>
           </div>
         ))}
       </div>
