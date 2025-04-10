@@ -18,7 +18,13 @@ interface Lycee {
   }
 
 
-const Lyceelist = ({ searchTerm } : { searchTerm: string }) => {
+  const Lyceelist = ({
+    searchTerm,
+    filterType
+  }: {
+    searchTerm: string;
+    filterType: 'nom' | 'ville' | 'statut' | 'cp';
+  }) => {
 
   const [lyceeInfo, setLyceeInfo] = useState<Lycee[]>([]);
   const [loading, setLoading] = useState(true);
@@ -47,14 +53,12 @@ const Lyceelist = ({ searchTerm } : { searchTerm: string }) => {
     }, []);
     
 
-  const filteredLycee = useMemo(() => {
-    return lyceeInfo.filter(lycee =>
-      lycee.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lycee.statut.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lycee._id.toLowerCase().includes(searchTerm) ||
-      lycee.ville.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  }, [lyceeInfo, searchTerm]);
+const filteredLycee = useMemo(() => {
+  return lyceeInfo.filter(lycee => {
+    const value = lycee[filterType]?.toString().toLowerCase() || '';
+    return value.includes(searchTerm.toLowerCase());
+  });
+}, [lyceeInfo, searchTerm, filterType]);
 
 if (loading) {
   return (
