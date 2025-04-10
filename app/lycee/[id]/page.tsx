@@ -45,8 +45,8 @@ export default function LyceeDetailsPage() {
             return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
         };
     return (
-        <div className="max-w-3xl mx-auto bg-white p-6 mt-10 rounded-xl shadow">
-            <h1 className="text-2xl font-bold mb-6">
+        <div className="max-w-3xl mx-auto bg-white p-6 mt-10 rounded-xl shadow-2xl border-blue-500">
+            <h1 className="text-2xl font-bold mb-6 text-center">
                 {lycee.nom || 'Détails du lycée'}
             </h1>
 
