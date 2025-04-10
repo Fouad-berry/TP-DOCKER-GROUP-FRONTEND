@@ -13,6 +13,7 @@ interface Lycee {
     academie: string;
     departement: string;
     uai: string;
+    telephone: number;
   }
   
 function LyceeList({ searchTerm } : { searchTerm: string }) {
@@ -28,7 +29,9 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
           _id: item._id,
           nom: item.nom,
           statut: item.statut,
-          ville: item.OR_VILLE
+          ville: item.OR_VILLE,
+          departement: item.département,
+          telephone: item.téléphone,
         }));
     
         setLyceeInfo(lycee);
@@ -58,13 +61,15 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
         {filteredLycee.map((monlycee) => (
           <div key={monlycee._id} className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer">
             <h2 className="text-xl font-semibold text-blue-800 mb-2">{monlycee.nom}</h2>
-            <div className={`inline-block px-2 py-1 rounded-full text-white text-xs text-center items-center justify-center ${
+            <div className={`inline-block px-2 py-1 rounded-full text-white text-xs text-center items-center justify-center mb-4 ${
                 monlycee.statut.toLowerCase() === 'public' ? 'bg-green-500' : 'bg-red-500'
             }`}>
                 {monlycee.statut}
             </div>
-            <p className="text-sm text-gray-500 mt-4"><strong>ID :</strong> {monlycee._id}</p>
+            <p className="text-sm text-gray-500"><strong>ID :</strong> {monlycee._id}</p>
             <p className="text-sm text-gray-500"><strong>Ville :</strong> {monlycee.ville}</p>
+            <p className="text-sm text-gray-500"><strong>Département :</strong> {monlycee.departement}</p>
+            <p className="text-sm text-gray-500"><strong>Numero de téléphone :</strong> {monlycee.telephone}</p>
           </div>
         ))}
       </div>
