@@ -56,9 +56,13 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
   }, [lyceeInfo, searchTerm]);
 
   if (loading) {
-    return <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5 text-3xl'>Loading Todos...</div>;
-  }
-
+      return (
+        <div className="flex justify-center items-center h-40">
+          <div className="w-12 h-12 border-4 border-blue-400 border-dashed rounded-full animate-spin"></div>
+        </div>
+      );
+    }
+    
   return (
     <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5'>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
