@@ -31,18 +31,19 @@ export default function LyceeDetailsPage() {
         return <p className="text-center mt-10">Lycée introuvable</p>;
 
     const formatKey = (key: string) => {
-        return key
-            .replace(/_/g, ' ')
-            .replace(/\b\w/g, (c) => c.toUpperCase())
-            .replace('Or ', '')
-            .replace('Geo.1', 'Coordonnées secondaires')
-            .replace('Geo', 'Coordonnées principales')
-            .replace('Cp', 'Code Postal')
-            .replace('Uai', 'UAI')
-            .replace('Dpt', 'Département')
-            .replace('N° Siret', 'SIRET');
-    };
+        let cleaned = key.replace(/_/g, ' ').trim().toLowerCase();
 
+        cleaned = cleaned
+            .replace('or ', '')
+            .replace('geo.1', 'coordonnées secondaires')
+            .replace('geo', 'coordonnées principales')
+            .replace('cp', 'code postal')
+            .replace('uai', 'UAI')
+            .replace('dpt', 'département')
+            .replace('n° siret', 'SIRET');
+
+            return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+        };
     return (
         <div className="max-w-3xl mx-auto bg-white p-6 mt-10 rounded-xl shadow">
             <h1 className="text-2xl font-bold mb-6">
