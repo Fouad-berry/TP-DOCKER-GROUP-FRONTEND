@@ -27,7 +27,7 @@ const Page = () => {
 
                 <div className="w-full md:w-1/2">
                     <img
-                        src="/lycee_numerique22.png"
+                        src="/lycee_numerique2.png"
                         alt="Lycée numérique"
                         className="object-cover w-full h-full"
                     />
