@@ -54,16 +54,15 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
 
   return (
     <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5'>
-      <h1 className='text-3xl'>Lycées numériques</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
         {filteredLycee.map((monlycee) => (
           <div key={monlycee._id} className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer">
             <h2 className="text-xl font-semibold text-blue-800 mb-2">{monlycee.nom}</h2>
-            <span className={`inline-block px-2 py-1 rounded-full text-white text-xs ${
+            <div className={`inline-block px-2 py-1 rounded-full text-white text-xs text-center items-center justify-center ${
                 monlycee.statut.toLowerCase() === 'public' ? 'bg-green-500' : 'bg-red-500'
             }`}>
                 {monlycee.statut}
-            </span>
+            </div>
             <p className="text-sm text-gray-500 mt-4"><strong>ID :</strong> {monlycee._id}</p>
             <p className="text-sm text-gray-500"><strong>Ville :</strong> {monlycee.ville}</p>
           </div>
