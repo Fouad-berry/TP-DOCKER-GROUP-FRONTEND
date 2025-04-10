@@ -34,6 +34,8 @@ const Lyceelist = ({
   const [lyceeInfo, setLyceeInfo] = useState<Lycee[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const router = useRouter();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -77,26 +79,13 @@ const Lyceelist = ({
     );
   }
 
-  const router = useRouter();
-
-{filteredLycee.map((monlycee) => (
-  <div
-    key={monlycee._id}
-    onClick={() => router.push(`/lycee-detail/${monlycee._id}`)}
-    className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer"
-  >
-    <h2 className="text-xl font-semibold text-blue-800 mb-2">{monlycee.nom}</h2>
-    {/* ... autres infos ... */}
-  </div>
-))}
-
-
   return (
     <div className="mx-auto bg-white p-6 rounded-2xl shadow-md mt-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
         {filteredLycee.map((monlycee) => (
           <div
             key={monlycee._id}
+            onClick={() => router.push(`/lycee/${monlycee._id}`)}
             className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer"
           >
             <h2 className="text-xl font-semibold text-blue-800 mb-2">
