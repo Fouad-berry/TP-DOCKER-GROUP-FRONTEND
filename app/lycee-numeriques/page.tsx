@@ -14,6 +14,8 @@ interface Lycee {
     departement: string;
     uai: string;
     telephone: number;
+    adresse: string;
+    cp: number;
   }
   
 function LyceeList({ searchTerm } : { searchTerm: string }) {
@@ -32,6 +34,8 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
           ville: item.OR_VILLE,
           departement: item.département,
           telephone: item.téléphone,
+          adresse: item.adresse,
+          cp: item.CP,
         }));
     
         setLyceeInfo(lycee);
@@ -69,6 +73,8 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
             <p className="text-sm text-gray-500"><strong>ID :</strong> {monlycee._id}</p>
             <p className="text-sm text-gray-500"><strong>Ville :</strong> {monlycee.ville}</p>
             <p className="text-sm text-gray-500"><strong>Département :</strong> {monlycee.departement}</p>
+            <p className="text-sm text-gray-500"><strong>Adresse :</strong> {monlycee.adresse}</p>
+            <p className="text-sm text-gray-500"><strong>Code postal :</strong> {monlycee.cp}</p>
             <p className="text-sm text-gray-500"><strong>Numero de téléphone :</strong> {monlycee.telephone}</p>
           </div>
         ))}
