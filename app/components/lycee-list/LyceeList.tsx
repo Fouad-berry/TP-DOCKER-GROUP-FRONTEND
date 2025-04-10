@@ -82,6 +82,19 @@ const Lyceelist = ({
         );
     }
 
+    if (filteredLycee.length === 0) {
+      return (
+        <div className="text-center text-gray-600 mt-10">
+          <p className="text-2xl font-semibold mb-2">🙈 Oups ! Rien trouvé...</p>
+          <p className="text-sm">
+            Aucun lycée ne correspond à votre recherche.
+            <br />
+            🤔 Essayez avec un autre terme ou vérifiez l’orthographe.
+          </p>
+        </div>
+      );
+    }
+    
     return (
         <div className="mx-auto bg-white p-6 rounded-2xl shadow-md mt-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
