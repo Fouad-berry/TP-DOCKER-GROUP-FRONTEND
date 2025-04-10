@@ -8,10 +8,8 @@ interface Lycee {
     nom: string;
     statut: string;
     ville: string;
-    siret: string;
     academie: string;
     departement: string;
-    uai: string;
     telephone: number;
     adresse: string;
     cp: number;
