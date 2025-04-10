@@ -1,0 +1,6 @@
+bashCopierModifiernode_modules
+.next
+.git
+Dockerfile
+README.md
+*.log 
