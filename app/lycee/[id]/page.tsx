@@ -46,7 +46,7 @@ export default function LyceeDetailsPage() {
         };
     return (
         <div className="max-w-3xl mx-auto bg-white p-6 mt-10 rounded-xl shadow-2xl border-blue-500">
-            <h1 className="text-2xl font-bold mb-6 text-center">
+            <h1 className="text-2xl font-bold mb-6 text-center text-blue-800 mb-">
                 {lycee.nom || 'Détails du lycée'}
             </h1>
 
