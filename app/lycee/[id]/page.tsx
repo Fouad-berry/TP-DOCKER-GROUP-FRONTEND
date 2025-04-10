@@ -46,7 +46,7 @@ export default function LyceeDetailsPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {Object.entries(lycee).map(([key, value]) => (
-          <div key={key} className="bg-gray-50 p-3 rounded border">
+          <div key={key} className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer">
             <p className="text-sm text-gray-500">{formatKey(key)}</p>
             <p className="font-semibold break-words">
               {typeof value === 'object' ? JSON.stringify(value) : value?.toString()}
