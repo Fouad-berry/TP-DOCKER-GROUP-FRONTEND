@@ -47,15 +47,20 @@ function LyceeList({ searchTerm } : { searchTerm: string }) {
 
   return (
     <div className='mx-auto bg-white p-6 rounded-2xl shadow-md mt-5'>
-      <h1 className='text-3xl'>Todo List</h1>
-      <ul>
-        {/* {todoList.map((todoObj) => (
-          <li key={todoObj._id}>Title: {todoObj.nom} - {todoObj.statut} - {todoObj._id}</li>
-        ))} */}
-        {filteredLycee.map((todoObj) => (
-          <li key={todoObj._id}>Nom: {todoObj.nom} - {todoObj.statut} - id: {todoObj._id}</li>
-        ))}
-      </ul>
+      <h1 className='text-3xl'>Lycées numériques</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        {filteredLycee.map((todoObj) => (
+          <div key={todoObj._id} className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow hover:shadow-lg transition">
+            <h2 className="text-xl font-semibold text-blue-800 mb-2">{todoObj.nom}</h2>
+            <span className={`inline-block px-3 py-1 rounded-full text-white text-xs ${
+                todoObj.statut.toLowerCase() === 'public' ? 'bg-green-500' : 'bg-red-500'
+            }`}>
+                {todoObj.statut}
+            </span>
+            <p className="text-sm text-gray-500"><strong>ID :</strong> {todoObj._id}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
